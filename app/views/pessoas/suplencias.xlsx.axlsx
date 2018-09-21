@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Suplências") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Número_USP Nome Inicio_Suplencia CodColegiado SiglaColegiado FuncaoColegiado FuncaoSuplencia )
+  
+  # each user is a row on your spreadsheet
+  @suplencias.each do |sup|
+    sheet.add_row [sup.codpes, sup.nompes, sup.dtainimdtsup, sup.codclgttu, sup.sglclgttu, sup.tipfncclgttu, sup.tipfncclgsup]
+  end
+end

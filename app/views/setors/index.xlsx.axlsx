@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Setores") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Codigo_Setor Tipo_setor Cod_Unid Area_Setor Email_Setor Nome_Abreviado Nome_Setor Data_criacao)
+
+  # each user is a row on your spreadsheet
+  @setors.each do |setor|
+    sheet.add_row [setor.codset, setor.tipset, setor.codund, setor.nomareatcset, setor.codema, setor.nomabvset, setor.nomset, setor.dtacriset]
+  end
+end

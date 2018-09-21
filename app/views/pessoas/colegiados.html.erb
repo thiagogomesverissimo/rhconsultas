@@ -1,0 +1,50 @@
+<h1>Dados referente a participações em colegiados - Docentes/Servidores ICB</h1>
+
+
+<%= link_to "Excel", colegiados_path(format: "xlsx"), class: 'btn btn-primary active' %>
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Data inicial</th>
+    <th>Data final</th>
+    <th>Código do colegiado</th>
+    <th>Sigla do colegiado</th>
+    <th>Tipo da função do colegiado</th>
+    <th>Tipo do colegiado</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% nome = '' %>
+  <% @colegiados.each do |pessoa| %>
+      <tr>
+        <% if nome == pessoa.nompes  %>
+            <td></td>
+            <td></td>
+            <td><%= l(pessoa.dtainimdt, :format => ("%d/%m/%Y")) if pessoa.dtainimdt %></td>
+            <td><%= l(pessoa.dtafimmdt, :format => ("%d/%m/%Y")) if pessoa.dtafimmdt %></td>
+            <td><%= pessoa.codclg %> </td>
+            <td><%= pessoa.sglclg %> </td>
+            <td><%= pessoa.tipfncclg %> </td>
+            <td><%= pessoa.tipclg %> </td>
+        <% else %>
+            <td><%= pessoa.codpes %></td>
+            <td><%= pessoa.nompes %></td>
+            <td><%= l(pessoa.dtainimdt, :format => ("%d/%m/%Y")) if pessoa.dtainimdt %></td>
+            <td><%= l(pessoa.dtafimmdt, :format => ("%d/%m/%Y")) if pessoa.dtafimmdt %></td>
+            <td><%= pessoa.codclg %> </td>
+            <td><%= pessoa.sglclg %> </td>
+            <td><%= pessoa.tipfncclg %> </td>
+            <td><%= pessoa.tipclg %> </td>
+
+        <% end %>
+
+        <% nome = pessoa.nompes  %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

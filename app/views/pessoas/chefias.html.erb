@@ -1,0 +1,60 @@
+<h1>Chefias ICB/USP</h1>
+
+<br>
+<%= link_to "Excel", chefias_path(format: "xlsx"), class: 'btn btn-primary active' %>
+
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Data inicial da designação</th>
+    <th>Data final da designação</th>
+    <th>Nome abreviado da função</th>
+    <th>Nome da função na estrutura</th>
+    <th>Tipo da designaçãor</th>
+    <th>Tipo da subordinação</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @chefias.each do |pessoa| %>
+    <tr>
+        <td><%= pessoa.codpes %></td>
+        <td><%= pessoa.nompes %></td>
+        <td><%= l(pessoa.dtainidsg, :format => ("%d/%m/%Y")) if pessoa.dtainidsg %></td>
+        <td><%= l(pessoa.dtafimdsg, :format => ("%d/%m/%Y")) if pessoa.dtafimdsg %></td>
+
+        <td><%= pessoa.nomabvfncetr %> </td>
+        <td><%= pessoa.nomfncetr %> </td>
+
+        <% if pessoa.tipdsg == 'D' %>
+          <td>Designação para uma designação propriamente dita a uma função</td>
+        <% elsif pessoa.tipdsg == 'S' %>
+          <td>Substituição de uma designação já existente</td>
+        <% elsif pessoa.tipdsg == 'P' %>
+          <td>Pró-labore</td>
+        <% elsif pessoa.tipdsg == 'L' %>
+          <td>Exercício de liderança</td>
+        <% elsif pessoa.tipdsg == 'E' %>
+          <td>Exercício de liderança em substituição</td>
+        <% else %>
+          <td></td>
+        <% end %>
+
+        <% if pessoa.tipsbnogn == 'C' %>
+            <td>Chefe</td>
+        <% elsif pessoa.tipsbnogn == 'D' %>
+          <td>Designados</td>
+        <% elsif pessoa.tipsbnogn == 'H' %>
+          <td>Horizontal</td>
+        <% else %>
+            <td></td>
+        <% end %>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,54 @@
+<h1>Dados referente ao histórico de alterações - Docentes/Servidores ICB</h1>
+
+<%= link_to "Excel", historico_path(format: "xlsx"), class: 'btn btn-primary active' %>
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Data inicial da alteração</th>
+    <th>Data final da alteração</th>
+    <th>Sexo</th>
+    <th>Tipo do doc. identificador</th>
+    <th>Núm. do doc. identificador</th>
+    <th>Data da expedição do doc. identificador</th>
+    <th>Orgão expeditor</th>
+    <th>Estado expeditor</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% codpes = '' %>
+  <% @historico.each do |pessoa| %>
+      <tr>
+        <% if codpes == pessoa.codpes  %>
+            <td></td>
+            <td></td>
+            <td><%= l(pessoa.dtainihstpes, :format => ("%d/%m/%Y")) if pessoa.dtainihstpes %></td>
+            <td><%= l(pessoa.dtafimhstpes, :format => ("%d/%m/%Y")) if pessoa.dtafimhstpes %></td>
+            <td><%= pessoa.sexpes %> </td>
+            <td><%= pessoa.tipdocidf %> </td>
+            <td><%= pessoa.numdocidf %> </td>
+            <td><%= l(pessoa.dtaexdidf, :format => ("%d/%m/%Y")) if pessoa.dtaexdidf %></td>
+            <td><%= pessoa.sglorgexdidf %> </td>
+            <td><%= pessoa.sglest %> </td>
+        <% else %>
+            <td><%= pessoa.codpes %></td>
+            <td><%= pessoa.nompes %></td>
+            <td><%= l(pessoa.dtainihstpes, :format => ("%d/%m/%Y")) if pessoa.dtainihstpes %></td>
+            <td><%= l(pessoa.dtafimhstpes, :format => ("%d/%m/%Y")) if pessoa.dtafimhstpes %></td>
+            <td><%= pessoa.sexpes %> </td>
+            <td><%= pessoa.tipdocidf %> </td>
+            <td><%= pessoa.numdocidf %> </td>
+            <td><%= l(pessoa.dtaexdidf, :format => ("%d/%m/%Y")) if pessoa.dtaexdidf %></td>
+            <td><%= pessoa.sglorgexdidf %> </td>
+            <td><%= pessoa.sglest %> </td>
+        <% end %>
+
+        <% codpes = pessoa.codpes  %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>we

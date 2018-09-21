@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Titulos") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Número_USP Nome Título Data_Inicial Data_Final )
+  
+  # each user is a row on your spreadsheet
+  @titulos.each do |tit|
+    sheet.add_row [tit.codpes, tit.nompes, tit.titpes, tit.dtaingtitpes, tit.dtafimtitpes ]
+  end
+end

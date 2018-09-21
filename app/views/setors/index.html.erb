@@ -1,0 +1,39 @@
+<h1>Setores do ICB</h1>
+
+<%= link_to "Excel", setors_path(format: "xlsx"), class: 'btn btn-primary active' %>
+
+<br>
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+    <tr>
+      <th>Codigo do Setor</th>
+      <th>Tipo do setor</th>
+      <th>Codigo da unidade</th>
+      <th>Nome da área do setor</th>
+      <th>E-mail do setor</th>
+      <th>Nome abreviado do setor</th>
+      <th>Nome do setor</th>
+      <th>Data da criação do setor</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @setors.each do |setor| %>
+      <tr>
+        <td><%= setor.codset %></td>
+        <td><%= setor.tipset %></td>
+        <td><%= setor.codund %></td>
+        <td><%= setor.nomareatcset %></td>
+        <td><%= setor.codema %></td>
+        <td><%= setor.nomabvset %></td>
+        <td><%= setor.nomset %></td>
+        <td><%= l(setor.dtacriset, :format => ("%d/%m/%Y")) if setor.dtacriset %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

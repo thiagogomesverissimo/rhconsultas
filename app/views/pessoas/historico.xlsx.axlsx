@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Historico") do |sheet|
+  # this is the head row of your spreadsheet
+
+ sheet.add_row %w(Número_USP Nome Data_inicial_alt Data_final_alt Sexo TipoDocIdent NumDocIdent DataExp Orgão_expeditor Estadoexpeditor)
+  
+  # each user is a row on your spreadsheet
+  @historico.each do |hist|
+
+    sheet.add_row [hist.codpes, hist.nompes, hist.dtainihstpes, hist.dtafimhstpes, hist.sexpes, hist.tipdocidf, hist.numdocidf, hist.dtaexdidf, hist.sglorgexdidf, hist.sglest ]
+  end
+end

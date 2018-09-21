@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Colegiados") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Número_USP Nome Data_Inicial Data_final CodColegiado SiglaColegiado TipoFuncaoColeg TipoColegiado )
+  
+  # each user is a row on your spreadsheet
+  @colegiados.each do |col|
+    sheet.add_row [col.codpes, col.nompes, col.dtainimdt, col.dtafimmdt, col.codclg, col.sglclg, col.tipfncclg, col.tipclg]
+
+  end
+end

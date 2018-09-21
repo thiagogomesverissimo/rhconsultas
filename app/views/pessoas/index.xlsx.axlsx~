@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Pessoas") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Número_USP Nome Nascimento Sexo Cadastro Estado_civil Tipo_do_vinculo Codigo_setor Contratação Ult_ocorrência Data_ocorrência Cargo Letra Função Tipo_função Jornada Nivel Regime Endereço Email)
+  
+  # each user is a row on your spreadsheet
+  @pessoas.each do |pessoa|
+    sheet.add_row [pessoa.codpes, pessoa.nompes, pessoa.dtanas, pessoa.sexpes, pessoa.dtacadpes, pessoa.estciv, pessoa.tipvin, pessoa.codset, pessoa.tiping, pessoa.sitoco,  pessoa.dtainisitoco, pessoa.nomabvcla, pessoa.nivgrupvm, pessoa.nomabvfnc, pessoa.tipfnc, pessoa.tipjor, pessoa.tipmer, pessoa.tipcon, pessoa.epflgr.to_s + pessoa.numlgr.to_s + pessoa.cpllgr.to_s + pessoa.codendptl.to_s + pessoa.nombro.to_s, pessoa.codema]
+  end
+end

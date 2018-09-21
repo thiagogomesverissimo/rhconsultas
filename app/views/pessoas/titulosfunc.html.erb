@@ -1,0 +1,41 @@
+<h1>Dados referente aos títulos - Docentes/Servidores ICB</h1>
+
+<%= link_to "Excel", titulosfunc_path(format: "xlsx"), class: 'btn btn-primary active' %>
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Título</th>
+    <th>Data inicial</th>
+    <th>Data final</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% nome = '' %>
+  <% @titulos.each do |pessoa| %>
+      <tr>
+
+        <% if nome == pessoa.nompes  %>
+            <td></td>
+            <td></td>
+            <td><%= pessoa.titpes %></td>
+            <td><%= l(pessoa.dtaingtitpes, :format => ("%d/%m/%Y")) if pessoa.dtaingtitpes %></td>
+            <td><%= l(pessoa.dtafimtitpes, :format => ("%d/%m/%Y")) if pessoa.dtafimtitpes %></td>
+        <% else %>
+            <td><%= pessoa.codpes %></td>
+            <td><%= pessoa.nompes %></td>
+            <td><%= pessoa.titpes %></td>
+            <td><%= l(pessoa.dtaingtitpes, :format => ("%d/%m/%Y")) if pessoa.dtaingtitpes %></td>
+            <td><%= l(pessoa.dtafimtitpes, :format => ("%d/%m/%Y")) if pessoa.dtafimtitpes %></td>
+        <% end %>
+
+        <% nome = pessoa.nompes  %>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Profissional") do |sheet|
+  # this is the head row of your spreadsheet
+
+  sheet.add_row %w(Número_USP Nome Data_inicial Data_final Cargo NomeEmpresa Tipo_Funçao Tipo_Jornada Tipo_Contratacao )
+  
+  # each user is a row on your spreadsheet
+  @profissional.each do |prof|
+    sheet.add_row [prof.codpes, prof.nompes, prof.dtainifnchst, prof.dtafimfnchst, prof.epffnchst, prof.nomepd, prof.tipfnc, prof.tipjor, prof.tipcon]
+  end
+end

@@ -1,0 +1,51 @@
+<h1>Dados referente a experiência profissional cadastrada - Docentes/Servidores ICB</h1>
+
+<%= link_to "Excel", profissional_path(format: "xlsx"), class: 'btn btn-primary active' %>
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Data inicial</th>
+    <th>Data final</th>
+    <th>Cargo</th>
+    <th>Nome da empresa</th>
+    <th>Tipo da função</th>
+    <th>Tipo da jornada</th>
+    <th>Tipo da contratação</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% nome = '' %>
+  <% @profissional.each do |pessoa| %>
+      <tr>
+        <% if nome == pessoa.nompes  %>
+            <td></td>
+            <td></td>
+            <td><%= l(pessoa.dtainifnchst, :format => ("%d/%m/%Y")) if pessoa.dtainifnchst %></td>
+            <td><%= l(pessoa.dtafimfnchst, :format => ("%d/%m/%Y")) if pessoa.dtafimfnchst %></td>
+            <td><%= pessoa.epffnchst %> </td>
+            <td><%= pessoa.nomepd %> </td>
+            <td><%= pessoa.tipfnc %> </td>
+            <td><%= pessoa.tipjor %> </td>
+            <td><%= pessoa.tipcon %> </td>
+        <% else %>
+            <td><%= pessoa.codpes %></td>
+            <td><%= pessoa.nompes %></td>
+            <td><%= l(pessoa.dtainifnchst, :format => ("%d/%m/%Y")) if pessoa.dtainifnchst %></td>
+            <td><%= l(pessoa.dtafimfnchst, :format => ("%d/%m/%Y")) if pessoa.dtafimfnchst %></td>
+            <td><%= pessoa.epffnchst %> </td>
+            <td><%= pessoa.nomepd %> </td>
+            <td><%= pessoa.tipfnc %> </td>
+            <td><%= pessoa.tipjor %> </td>
+            <td><%= pessoa.tipcon %> </td>
+        <% end %>
+
+        <% nome = pessoa.nompes  %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

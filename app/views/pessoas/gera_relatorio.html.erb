@@ -1,0 +1,75 @@
+<h1>Pessoas - ICB - USP</h1>
+
+<br>
+<%= link_to "Excel", gera_relatorioex_path(format: "xlsx"), class: 'btn btn-primary active' %>
+
+<br>
+
+<table class=" table table-bordered display" >
+  <thead>
+    <tr>
+      <th>Número USP</th>
+      <th>Nome</th>
+      <th>Nascimento</th>
+      <th>Sexo</th>
+      <th>Cadastro</th>
+      <th>Estado civil</th>
+      <th>Tipo do vinculo</th>
+      <th>Codigo do setor</th>
+      <th>Contratação</th>
+      <th>Ult. ocorrência</th>
+      <th>Data ocorrência</th>
+      <th>Cargo</th>
+      <th>Letra</th>
+      <th>Função</th>
+      <th>Tipo da função</th>
+      <th>Jornada </th>
+      <th>Nivel </th>
+      <th>Regime </th>
+      <th>Endereço </th>
+      <th>E-mail</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pessoas.each do |pessoa| %>
+      <tr>
+        <td><%= pessoa.codpes %></td>
+        <td><%= pessoa.nompes %></td>
+        <td><%= l(pessoa.dtanas, :format => ("%d/%m/%Y")) if pessoa.dtanas %></td>
+        <td><%= pessoa.sexpes %></td>
+        <td><%= l(pessoa.dtacadpes, :format => ("%d/%m/%Y")) if pessoa.dtacadpes %></td>
+        <td><%= pessoa.estciv %></td>
+        <td><%= pessoa.tipvin %></td>
+        <td><%= pessoa.codset %></td>
+        <td><%= pessoa.tiping %></td>
+        <td><%= pessoa.sitoco %></td>
+        <td><%= l(pessoa.dtainisitoco, :format => ("%d/%m/%Y")) if pessoa.dtainisitoco %></td>
+        <td><%= pessoa.nomabvcla %></td>
+        <td><%= pessoa.nivgrupvm %></td>
+        <td><%= pessoa.nomabvfnc %></td>
+        <td><%= pessoa.tipfnc %></td>
+        <td><%= pessoa.tipjor %></td>
+        <td><%= pessoa.tipmer %></td>
+        <td><%= pessoa.tipcon %></td>
+        <td><%= pessoa.epflgr %>, <%= pessoa.numlgr %> <%= pessoa.cpllgr %> CEP: <%= pessoa.codendptl %> <%= pessoa.nombro %></td>
+        <td><%= pessoa.codema %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<!--
+<th>Jornada </th>
+<th>Nivel </th>
+<th>Regime </th>
+-->
+
+<!--
+
+
+
+-->

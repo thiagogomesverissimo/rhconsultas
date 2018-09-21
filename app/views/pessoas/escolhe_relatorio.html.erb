@@ -1,0 +1,46 @@
+<div class="container">
+
+  <%= form_tag(gera_relatorio_path, method: "get") do %>
+
+  <fieldset>
+    <legend>Escolha a opção de relatório:</legend>
+
+    <div class="field">
+      <%= label_tag :status, "Status" %> <br>
+      <%= select_tag :status, options_for_select(["Ativos", "Inativos", "Todos"])  %><br>
+    </div>
+
+    <div class="field">
+      <%= label_tag :sexo, "Sexo" %> <br>
+      <%= select_tag :sexo, options_for_select(["F", "M"]), :prompt => "Sem sexo definido"   %><br>
+    </div>
+
+    <div class="field">
+      <%= label_tag :estadocivil, "Estado Cívil" %> <br>
+      <%= select_tag :estadocivil, options_from_collection_for_select(@estadocivil, :estciv, :estciv), :prompt => "Sem estado civil definido"  %><br>
+    </div>
+
+    <div class="field">
+      <%= label_tag :cargo, "Cargo" %> <br>
+      <%= select_tag :cargo, options_from_collection_for_select(@cargo, :nomabvcla, :nomabvcla), :prompt => "Sem cargo definido"  %><br>
+    </div>
+
+    <div class="field">
+      <%= label_tag :jornada, "Jornada" %> <br>
+      <%= select_tag :jornada, options_from_collection_for_select(@jornada, :tipjor, :tipjor), :prompt => "Sem jornada definida"  %><br>
+    </div>
+
+    <div class="field">
+      <%= label_tag :regime, "Regime" %> <br>
+      <%= select_tag :regime, options_from_collection_for_select(@regime, :tipcon, :tipcon), :prompt => "Sem regime definido"  %><br>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Buscar", :class=>'btn btn-info' %>
+    </div>
+
+    <% end %>
+
+
+  </fieldset>
+</div>

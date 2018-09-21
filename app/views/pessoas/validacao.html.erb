@@ -1,0 +1,82 @@
+<h1>Dados referente a validação dos títulos</h1>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Data da ocorrência da validação</th>
+    <th>Tipo da validação do título</th>
+    <th>Data da validação da CPG</th>
+    <th>Status da aprovação da CPG</th>
+    <th>Data da validação da CoPGr</th>
+    <th>Status da aprovação CoPGr</th>
+    <th>Observação da situação</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% nome = '' %>
+  <% @validacao.each do |pessoa| %>
+      <tr>
+        <% if nome == pessoa.nompes  %>
+            <td></td>
+            <td></td>
+            <td><%= l(pessoa.dtaocoval, :format => ("%d/%m/%Y")) if pessoa.dtaocoval %></td>
+            <% if pessoa.tipvaltit == 'RCO' %>
+                <td>Reconhecimento de título</td>
+            <% elsif pessoa.tipvaltit == 'REV' %>
+                <td>Revalidação de diploma</td>
+            <% elsif pessoa.tipvaltit == 'VAL' %>
+                <td>Validação de título</td>
+            <% end %>
+            <td><%= l(pessoa.dtamancpg, :format => ("%d/%m/%Y")) if pessoa.dtamancpg %></td>
+            <% if pessoa.staaprcpg == 'FV' %>
+                <td>Favorável</td>
+            <% elsif pessoa.staaprcpg == 'NF' %>
+                <td>Não Favorável</td>
+            <% end %>
+            <td><%= l(pessoa.dtamancog, :format => ("%d/%m/%Y")) if pessoa.dtamancog %></td>
+            <% if pessoa.staaprcog == 'FV' %>
+                <td>Favorável</td>
+            <% elsif pessoa.staaprcog == 'NF' %>
+                <td>Não Favorável</td>
+            <% end %>
+            <td><%= pessoa.obssitrco %> </td>
+        <% else %>
+            <td><%= pessoa.codpes %></td>
+            <td><%= pessoa.nompes %></td>
+            <td><%= l(pessoa.dtaocoval, :format => ("%d/%m/%Y")) if pessoa.dtaocoval %></td>
+            <% if pessoa.tipvaltit == 'RCO' %>
+                <td>Reconhecimento de título</td>
+            <% elsif pessoa.tipvaltit == 'REV' %>
+                <td>Revalidação de diploma</td>
+            <% elsif pessoa.tipvaltit == 'VAL' %>
+                <td>Validação de título</td>
+            <% else %>
+                <td></td>
+            <% end %>
+            <td><%= l(pessoa.dtamancpg, :format => ("%d/%m/%Y")) if pessoa.dtamancpg %></td>
+            <% if pessoa.staaprcpg == 'FV' %>
+                <td>Favorável</td>
+            <% elsif pessoa.staaprcpg == 'NF' %>
+                <td>Não Favorável</td>
+            <% else %>
+                <td></td>
+            <% end %>
+            <td><%= l(pessoa.dtamancog, :format => ("%d/%m/%Y")) if pessoa.dtamancog %></td>
+            <% if pessoa.staaprcog == 'FV' %>
+                <td>Favorável</td>
+            <% elsif pessoa.staaprcog == 'NF' %>
+                <td>Não Favorável</td>
+            <% else %>
+                <td></td>
+            <% end %>
+            <td><%= pessoa.obssitrco %> </td>
+        <% end %>
+
+        <% nome = pessoa.nompes  %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

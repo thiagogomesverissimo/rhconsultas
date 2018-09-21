@@ -1,0 +1,47 @@
+<h1>Dados referente a participações em suplências - Docentes/Servidores ICB</h1>
+
+<%= link_to "Excel", suplencias_path(format: "xlsx"), class: 'btn btn-primary active' %>
+<br>
+
+<table class=" table table-bordered display">
+  <thead>
+  <tr>
+    <th>Número USP</th>
+    <th>Nome</th>
+    <th>Data inicio da suplência</th>
+    <th>Código do colegiado</th>
+    <th>Sigla do colegiado</th>
+    <th>Tipo da função do colegiado</th>
+    <th>Tipo da função de suplência</th>
+  </tr>
+  </thead>
+
+
+  <tbody>
+  <% nome = '' %>
+  <% @suplencias.each do |pessoa| %>
+      <tr>
+        <% if nome == pessoa.nompes  %>
+            <td></td>
+            <td></td>
+            <td><%= l(pessoa.dtainimdtsup, :format => ("%d/%m/%Y")) if pessoa.dtainimdtsup %></td>
+            <td><%= pessoa.codclgttu %> </td>
+            <td><%= pessoa.sglclgttu %> </td>
+            <td><%= pessoa.tipfncclgttu %> </td>
+            <td><%= pessoa.tipfncclgsup %> </td>
+        <% else %>
+            <td><%= pessoa.codpes %></td>
+            <td><%= pessoa.nompes %></td>
+            <td><%= l(pessoa.dtainimdtsup, :format => ("%d/%m/%Y")) if pessoa.dtainimdtsup %></td>
+            <td><%= pessoa.codclgttu %> </td>
+            <td><%= pessoa.sglclgttu %> </td>
+            <td><%= pessoa.tipfncclgttu %> </td>
+            <td><%= pessoa.tipfncclgsup %> </td>
+
+        <% end %>
+
+        <% nome = pessoa.nompes  %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
